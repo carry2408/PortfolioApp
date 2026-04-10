@@ -19,7 +19,10 @@ export default function Contact({ darkMode }) {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/contact", form);
+      await axios.post(
+        "https://portfolioapp-in0i.onrender.com/contact",
+        form
+      );
       setStatus("Message sent successfully");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
@@ -30,9 +33,8 @@ export default function Contact({ darkMode }) {
   return (
     <section
       id="contact"
-      className={`px-6 py-20 ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
-      }`}
+      className={`px-6 py-20 ${darkMode ? "bg-black text-white" : "bg-white text-black"
+        }`}
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
@@ -78,11 +80,10 @@ export default function Contact({ darkMode }) {
         {/* RIGHT SIDE - FORM */}
         <form
           onSubmit={handleSubmit}
-          className={`flex flex-col gap-4 rounded-2xl border p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
-            darkMode
+          className={`flex flex-col gap-4 rounded-2xl border p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${darkMode
               ? "border-gray-700 bg-white/5 hover:border-blue-500/50 hover:shadow-blue-500/10"
               : "border-gray-200 bg-white/80 hover:border-blue-400/60 hover:shadow-blue-200/70"
-          }`}
+            }`}
         >
           <input
             type="text"
@@ -90,11 +91,10 @@ export default function Contact({ darkMode }) {
             placeholder="Your Name"
             value={form.name}
             onChange={handleChange}
-            className={`rounded-xl border p-3 outline-none transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 focus:-translate-y-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 ${
-              darkMode
+            className={`rounded-xl border p-3 outline-none transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 focus:-translate-y-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 ${darkMode
                 ? "border-gray-700 bg-white/5 placeholder:text-gray-500"
                 : "border-gray-300 bg-white placeholder:text-gray-500"
-            }`}
+              }`}
             required
           />
 
@@ -104,11 +104,10 @@ export default function Contact({ darkMode }) {
             placeholder="Your Email"
             value={form.email}
             onChange={handleChange}
-            className={`rounded-xl border p-3 outline-none transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 focus:-translate-y-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 ${
-              darkMode
+            className={`rounded-xl border p-3 outline-none transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 focus:-translate-y-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 ${darkMode
                 ? "border-gray-700 bg-white/5 placeholder:text-gray-500"
                 : "border-gray-300 bg-white placeholder:text-gray-500"
-            }`}
+              }`}
             required
           />
 
@@ -117,11 +116,10 @@ export default function Contact({ darkMode }) {
             placeholder="Your Message"
             value={form.message}
             onChange={handleChange}
-            className={`rounded-xl border p-3 outline-none transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 focus:-translate-y-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 ${
-              darkMode
+            className={`rounded-xl border p-3 outline-none transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 focus:-translate-y-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 ${darkMode
                 ? "border-gray-700 bg-white/5 placeholder:text-gray-500"
                 : "border-gray-300 bg-white placeholder:text-gray-500"
-            }`}
+              }`}
             rows="5"
             required
           />
