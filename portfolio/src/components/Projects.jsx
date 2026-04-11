@@ -7,15 +7,15 @@ export default function Projects({ darkMode }) {
       desc: "MERN based system for managing hostel room allocation.",
       tech: ["React", "Node.js", "Express", "SQL"],
       img: "/hostel.png",
-      github: "#",
-      live: "https://hostel-allotment-sigma.vercel.app/",
+      github: "https://github.com/carry2408/Hostel-Allotment",
+      live: "https://hostel-allotment-two.vercel.app/login",
     },
     {
       title: "Portfolio Website",
       desc: "Personal portfolio built with React and Tailwind.",
       tech: ["React", "Tailwind"],
       img: "/portfolio.png",
-      github: "#",
+      github: "https://github.com/carry2408/PortfolioApp",
       live: "#",
     },
     {
