@@ -23,7 +23,7 @@ export default function Projects({ darkMode }) {
       desc: "Full stack clone with authentication and listings.",
       tech: ["React", "Node.js", "Express", "SQL"],
       img: "/airbnb.png",
-      github: "#",
+      github: "https://github.com/carry2408/AIRBNB-CLONE-PROJECT",
       live: "#",
     },
     {
@@ -31,8 +31,8 @@ export default function Projects({ darkMode }) {
       desc: "Weather app using API with real-time data.",
       tech: ["React", "API"],
       img: "/weather.png",
-      github: "#",
-      live: "#",
+      github: "https://github.com/carry2408/React-Weather-App",
+      live: "https://react-weather-app-eight-hazel.vercel.app/",
     },
   ];
 

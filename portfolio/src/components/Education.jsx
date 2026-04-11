@@ -54,7 +54,7 @@ function TimelineItem({ year, title, subtitle, detail }) {
       className="relative mb-10 ml-6 cursor-pointer"
     >
       {/* dot */}
-      <span className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full"></span>
+      <span className="absolute -left-7 w-3 h-3 bg-blue-500 rounded-full "></span>
 
       <p className="text-sm text-gray-400">{year}</p>
 
