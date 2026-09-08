@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Hero({ darkMode }) {
   const [text, setText] = useState("");
-  const fullText = "Full Stack Developer | MERN Stack";
+  const fullText = "Full Stack Developer | Java Backend Devoloper ";
 
   // simple typing effect
   useEffect(() => {

@@ -34,7 +34,7 @@ export default function Education({ darkMode }) {
             year="2024 - 2028"
             title="B.E. Computer Science"
             subtitle="MS Ramaiah Institute, Bangalore"
-            detail="CGPA: 9.2 (Current - 2nd Year)"
+            detail="CGPA: 9.0 (Current - 3nd Year)"
           />
 
         </div>
