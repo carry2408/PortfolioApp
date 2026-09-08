@@ -8,7 +8,7 @@ export default function Projects({ darkMode }) {
       tech: ["React", "Node.js", "Express", "SQL"],
       img: "/hostel.png",
       github: "https://github.com/carry2408/Hostel-Allotment",
-      live: "https://hostel-allotment-two.vercel.app/",
+      live: "                     ",
     },
     {
       title: "Portfolio Website",
