@@ -46,10 +46,7 @@ export default function About({ darkMode }) {
                             " leading-relaxed mb-4"
                         }
                     >
-                        I am a passionate Full Stack Developer focused on
-                        building modern web applications using the MERN stack.
-                        I enjoy solving problems and continuously improving my
-                        skills in Data Structures and Algorithms.
+                        I am a passionate Full Stack Developer focused on building modern web applications using React for the frontend and Java with Spring Framework for the backend. I enjoy solving problems and continuously improving my skills in Data Structures and Algorithms.
                     </p>
 
                     <p
