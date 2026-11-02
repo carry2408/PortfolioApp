@@ -3,12 +3,20 @@ import { motion } from "framer-motion";
 export default function Projects({ darkMode }) {
   const projects = [
     {
+      title: "BloodBridge",
+      desc: "Full-stack blood donation camp management platform to streamline donor registration, volunteer coordination, and inventory management.",
+      tech: ["React", "Javascript", "Spring Boot", "PostgreSQL", "Jwt Authentication"],
+      img: "/bloodbridge.png",
+      github: "https://github.com/carry2408/BloodBridge",
+      live: "https://blood-bridge-blood-donation.vercel.app/",
+    },
+    {
       title: "Hostel Room Allotment",
       desc: "MERN based system for managing hostel room allocation.",
       tech: ["React", "Node.js", "Express", "SQL"],
       img: "/hostel.png",
       github: "https://github.com/carry2408/Hostel-Allotment",
-      live: "                     ",
+      live: "https://hostel-allotment-two.vercel.app/login",
     },
     {
       title: "Portfolio Website",
@@ -17,6 +25,15 @@ export default function Projects({ darkMode }) {
       img: "/portfolio.png",
       github: "https://github.com/carry2408/PortfolioApp",
       live: "#",
+    },
+
+    {
+      title: "TaskFlow (Made for team work)",
+      desc: "Full-stack Jira-inspired agile project management and issue-tracking platform featuring Kanban boards, sprint lifecycle management, team collaboration, and role-based access control.",
+      tech: ["React", "Spring Boot", "PostgreSQL", "Redis", "Docker", "Tailwind CSS", "JWT Authentication"],
+      img: "/taskflow.png",
+      github: "https://github.com/carry2408/TaskFlow",
+      live: "#", // update with your live deployment URL if different
     },
     {
       title: "Airbnb Clone",
@@ -39,9 +56,8 @@ export default function Projects({ darkMode }) {
   return (
     <section
       id="projects"
-      className={`px-6 py-20 ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
-      }`}
+      className={`px-6 py-20 ${darkMode ? "bg-black text-white" : "bg-white text-black"
+        }`}
     >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-semibold mb-12">Projects</h2>
