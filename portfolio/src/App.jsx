@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import BackgroundLogs from "./components/BackgroundLogs";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -24,19 +25,25 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-200 ${
+      className={`min-h-screen relative transition-colors duration-200 overflow-x-hidden ${
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <main>
-        <Hero darkMode={darkMode} />
-        <About darkMode={darkMode} />
-        <Education darkMode={darkMode} />
-        <Projects darkMode={darkMode} />
-        <Contact darkMode={darkMode} />
-      </main>
-      <Footer darkMode={darkMode} />
+      {/* Dynamic Faded Backend Log Stream Watermark */}
+      <BackgroundLogs darkMode={darkMode} />
+
+      {/* Foreground Content */}
+      <div className="relative z-10">
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <main>
+          <Hero darkMode={darkMode} />
+          <About darkMode={darkMode} />
+          <Education darkMode={darkMode} />
+          <Projects darkMode={darkMode} />
+          <Contact darkMode={darkMode} />
+        </main>
+        <Footer darkMode={darkMode} />
+      </div>
     </div>
   );
 }

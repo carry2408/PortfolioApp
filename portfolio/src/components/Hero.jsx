@@ -77,7 +77,7 @@ export default function Hero({ darkMode }) {
                   : "bg-neutral-100 border-neutral-300 text-neutral-700"
               }`}
             >
-              Open for Internships & Opportunities
+              Open to Internships & full-time opportunities
             </div>
           </div>
         </motion.div>
