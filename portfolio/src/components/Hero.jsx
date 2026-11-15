@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload, FaTerminal, FaServer, FaDatabase, FaCode } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload, FaTerminal, FaServer, FaCode } from "react-icons/fa";
 import { SiSpring, SiPostgresql, SiDocker } from "react-icons/si";
 
 export default function Hero({ darkMode }) {
@@ -40,37 +40,41 @@ export default function Hero({ darkMode }) {
   return (
     <section
       id="home"
-      className={`min-h-screen flex items-center justify-center pt-24 pb-16 px-6 ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+      className={`min-h-screen flex items-center justify-center pt-24 pb-16 px-6 transition-colors duration-200 ${
+        darkMode ? "bg-black text-white" : "bg-white text-neutral-900"
       }`}
     >
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center">
         
-        {/* Left: Profile Image & Terminal Meta (5 cols) */}
+        {/* Left: Circular Grayscale Profile Image (5 cols) */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="md:col-span-5 flex flex-col items-center md:items-start"
+          className="md:col-span-5 flex flex-col items-center justify-center"
         >
-          {/* Profile photo with sharp dark border */}
-          <div className="relative group">
-            <div className={`p-1 rounded-2xl border ${
-              darkMode ? "border-neutral-800 bg-neutral-950" : "border-neutral-200 bg-neutral-50"
-            }`}>
+          {/* Circular Frame with Grayscale Image */}
+          <div className="relative group flex flex-col items-center">
+            <div
+              className={`p-1.5 rounded-full border shadow-sm transition-all duration-300 ${
+                darkMode
+                  ? "border-neutral-800 bg-neutral-950 group-hover:border-neutral-700"
+                  : "border-neutral-300 bg-neutral-100 group-hover:border-neutral-400"
+              }`}
+            >
               <img
                 src="/profile.png"
                 alt="Veeresh Patil"
-                className="w-56 h-56 sm:w-64 sm:h-64 object-cover rounded-xl transition duration-300 group-hover:grayscale-0"
+                className="w-52 h-52 sm:w-64 sm:h-64 object-cover rounded-full grayscale contrast-110 brightness-95 transition-all duration-300 group-hover:grayscale-0"
               />
             </div>
 
             {/* Terminal status badge */}
             <div
-              className={`mt-4 px-3.5 py-1.5 rounded-lg border font-mono text-xs flex items-center gap-2 ${
+              className={`mt-4 px-3.5 py-1.5 rounded-full border font-mono text-xs flex items-center gap-2 ${
                 darkMode
-                  ? "bg-neutral-950 border-neutral-850 text-neutral-300"
-                  : "bg-neutral-100 border-neutral-200 text-neutral-700"
+                  ? "bg-neutral-950 border-neutral-800 text-neutral-300"
+                  : "bg-neutral-100 border-neutral-300 text-neutral-800"
               }`}
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -96,19 +100,25 @@ export default function Hero({ darkMode }) {
             Hi, I am
           </p>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-1 text-white">
+          <h1
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mt-1 ${
+              darkMode ? "text-white" : "text-neutral-900"
+            }`}
+          >
             Veeresh Patil
           </h1>
 
           {/* Typing Terminal Display */}
-          <div className="mt-3 font-mono text-lg sm:text-xl font-semibold flex items-center min-h-[32px] text-blue-400">
+          <div className="mt-3 font-mono text-lg sm:text-xl font-semibold flex items-center min-h-[32px] text-blue-500">
             <span>&gt; {text}</span>
             <span className="inline-block w-2 h-5 bg-blue-500 ml-1.5 animate-pulse" />
           </div>
 
-          <p className={`mt-4 text-sm sm:text-base leading-relaxed max-w-xl ${
-            darkMode ? "text-neutral-400" : "text-neutral-600"
-          }`}>
+          <p
+            className={`mt-4 text-sm sm:text-base leading-relaxed max-w-xl ${
+              darkMode ? "text-neutral-400" : "text-neutral-700"
+            }`}
+          >
             Computer Science undergraduate at Ramaiah Institute of Technology (MSRIT), Bengaluru.
             Focused on engineering robust server-side architectures, RESTful APIs, and database-driven
             systems with Java, Spring Boot, PostgreSQL, and modern React frontends.
@@ -116,28 +126,44 @@ export default function Hero({ darkMode }) {
 
           {/* Stack summary chips (monospace, backend style) */}
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-mono">
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
-              darkMode ? "border-neutral-800 bg-neutral-900 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-800"
-            }`}>
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
+                darkMode
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-300"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+              }`}
+            >
               <FaServer className="text-amber-500" />
               <span>Java 21</span>
             </span>
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
-              darkMode ? "border-neutral-800 bg-neutral-900 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-800"
-            }`}>
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
+                darkMode
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-300"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+              }`}
+            >
               <SiSpring className="text-emerald-500" />
               <span>Spring Boot</span>
             </span>
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
-              darkMode ? "border-neutral-800 bg-neutral-900 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-800"
-            }`}>
-              <SiPostgresql className="text-sky-400" />
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
+                darkMode
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-300"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+              }`}
+            >
+              <SiPostgresql className="text-sky-500" />
               <span>PostgreSQL</span>
             </span>
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
-              darkMode ? "border-neutral-800 bg-neutral-900 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-800"
-            }`}>
-              <SiDocker className="text-blue-400" />
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
+                darkMode
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-300"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+              }`}
+            >
+              <SiDocker className="text-blue-500" />
               <span>Docker</span>
             </span>
           </div>
@@ -159,7 +185,7 @@ export default function Hero({ darkMode }) {
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border font-mono text-xs font-semibold transition-colors ${
                 darkMode
                   ? "border-neutral-700 bg-neutral-900 text-neutral-200 hover:border-neutral-500 hover:text-white"
-                  : "border-neutral-300 bg-white text-neutral-800 hover:border-neutral-400"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-neutral-400 hover:bg-neutral-200"
               }`}
             >
               <FaCode />
@@ -171,7 +197,7 @@ export default function Hero({ darkMode }) {
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border font-mono text-xs font-semibold transition-colors ${
                 darkMode
                   ? "border-neutral-800 hover:border-neutral-700 text-neutral-400 hover:text-white"
-                  : "border-neutral-300 text-neutral-600 hover:text-black"
+                  : "border-neutral-300 hover:border-neutral-400 text-neutral-700 hover:text-black"
               }`}
             >
               <span>Contact</span>
@@ -179,8 +205,14 @@ export default function Hero({ darkMode }) {
           </div>
 
           {/* Social Links */}
-          <div className="mt-8 pt-6 border-t border-neutral-900 w-full flex items-center gap-4 text-neutral-400">
-            <span className="font-mono text-xs text-neutral-500">socials:</span>
+          <div
+            className={`mt-8 pt-6 border-t w-full flex items-center gap-4 ${
+              darkMode ? "border-neutral-900 text-neutral-400" : "border-neutral-200 text-neutral-600"
+            }`}
+          >
+            <span className={`font-mono text-xs ${darkMode ? "text-neutral-500" : "text-neutral-500"}`}>
+              socials:
+            </span>
             <a
               href="https://github.com/carry2408"
               target="_blank"

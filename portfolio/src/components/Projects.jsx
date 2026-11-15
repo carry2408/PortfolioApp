@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt, FaTerminal, FaFolder } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaFolder } from "react-icons/fa";
 
 export default function Projects({ darkMode }) {
   const [filter, setFilter] = useState("all");
@@ -72,8 +72,8 @@ export default function Projects({ darkMode }) {
   return (
     <section
       id="projects"
-      className={`py-24 px-6 border-t ${
-        darkMode ? "bg-black border-neutral-900 text-white" : "bg-neutral-50 border-neutral-200 text-black"
+      className={`py-24 px-6 border-t transition-colors duration-200 ${
+        darkMode ? "bg-black border-neutral-900 text-white" : "bg-neutral-50 border-neutral-200 text-neutral-900"
       }`}
     >
       <div className="max-w-6xl mx-auto">
@@ -83,7 +83,11 @@ export default function Projects({ darkMode }) {
             <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1 block">
               // 03. PROJECTS
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            <h2
+              className={`text-3xl sm:text-4xl font-bold tracking-tight ${
+                darkMode ? "text-white" : "text-neutral-900"
+              }`}
+            >
               Engineering Work
             </h2>
           </div>
@@ -103,7 +107,7 @@ export default function Projects({ darkMode }) {
                     ? "bg-blue-600 border-blue-500 text-white font-semibold"
                     : darkMode
                     ? "border-neutral-800 bg-neutral-900 text-neutral-400 hover:text-white"
-                    : "border-neutral-200 bg-white text-neutral-600 hover:text-black"
+                    : "border-neutral-300 bg-white text-neutral-700 hover:text-black font-medium"
                 }`}
               >
                 [{tab.label}]
@@ -138,19 +142,21 @@ function ProjectCard({ project, darkMode, index }) {
       className={`rounded-xl border flex flex-col justify-between overflow-hidden transition-colors ${
         darkMode
           ? "bg-neutral-950 border-neutral-850 hover:border-neutral-700"
-          : "bg-white border-neutral-200 hover:border-neutral-300"
+          : "bg-white border-neutral-300 hover:border-neutral-400 shadow-sm"
       }`}
     >
       <div>
         {/* Terminal Header bar */}
         <div className={`px-4 py-2 border-b flex items-center justify-between font-mono text-xs ${
-          darkMode ? "border-neutral-850 bg-neutral-900/60 text-neutral-400" : "border-neutral-200 bg-neutral-100 text-neutral-600"
+          darkMode ? "border-neutral-850 bg-neutral-900/60 text-neutral-400" : "border-neutral-200 bg-neutral-100 text-neutral-700"
         }`}>
           <span className="flex items-center gap-2">
             <FaFolder className="text-amber-500 text-xs" />
             <span className="truncate max-w-[180px]">{project.title.toLowerCase().replace(/\s+/g, "-")}</span>
           </span>
-          <span className="text-[10px] text-neutral-500 uppercase">{project.category}</span>
+          <span className={`text-[10px] uppercase font-semibold ${darkMode ? "text-neutral-500" : "text-neutral-500"}`}>
+            {project.category}
+          </span>
         </div>
 
         {/* Project Image */}
@@ -167,12 +173,16 @@ function ProjectCard({ project, darkMode, index }) {
 
         {/* Content */}
         <div className="p-5">
-          <h3 className="font-bold text-base tracking-tight text-white">
+          <h3
+            className={`font-bold text-base tracking-tight ${
+              darkMode ? "text-white" : "text-neutral-900"
+            }`}
+          >
             {project.title}
           </h3>
 
           <p className={`mt-2 text-xs leading-relaxed line-clamp-3 ${
-            darkMode ? "text-neutral-400" : "text-neutral-600"
+            darkMode ? "text-neutral-400" : "text-neutral-700"
           }`}>
             {project.desc}
           </p>
@@ -183,7 +193,9 @@ function ProjectCard({ project, darkMode, index }) {
               <span
                 key={idx}
                 className={`px-2 py-0.5 rounded border ${
-                  darkMode ? "border-neutral-800 bg-neutral-900 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-700"
+                  darkMode
+                    ? "border-neutral-800 bg-neutral-900 text-neutral-300"
+                    : "border-neutral-300 bg-neutral-100 text-neutral-800 font-medium"
                 }`}
               >
                 {t}
@@ -195,7 +207,7 @@ function ProjectCard({ project, darkMode, index }) {
 
       {/* Action Footer */}
       <div className={`p-4 border-t flex items-center gap-3 font-mono text-xs ${
-        darkMode ? "border-neutral-850 bg-neutral-950" : "border-neutral-200 bg-white"
+        darkMode ? "border-neutral-850 bg-neutral-950" : "border-neutral-200 bg-neutral-50"
       }`}>
         <a
           href={project.github}
@@ -204,7 +216,7 @@ function ProjectCard({ project, darkMode, index }) {
           className={`flex-1 inline-flex items-center justify-center gap-2 py-2 rounded-lg border transition-colors ${
             darkMode
               ? "border-neutral-800 bg-neutral-900 hover:border-neutral-700 text-neutral-200"
-              : "border-neutral-300 bg-neutral-100 hover:border-neutral-400 text-neutral-800"
+              : "border-neutral-300 bg-white hover:border-neutral-400 text-neutral-800 font-medium shadow-xs"
           }`}
         >
           <FaGithub />
@@ -222,8 +234,8 @@ function ProjectCard({ project, darkMode, index }) {
             <FaExternalLinkAlt className="text-[10px]" />
           </a>
         ) : (
-          <span className={`flex-1 inline-flex items-center justify-center py-2 rounded-lg border text-neutral-500 text-[11px] cursor-not-allowed ${
-            darkMode ? "border-neutral-900 bg-neutral-900/40" : "border-neutral-200 bg-neutral-50"
+          <span className={`flex-1 inline-flex items-center justify-center py-2 rounded-lg border text-[11px] cursor-not-allowed ${
+            darkMode ? "border-neutral-900 bg-neutral-900/40 text-neutral-500" : "border-neutral-300 bg-neutral-100 text-neutral-500"
           }`}>
             Code Only
           </span>
