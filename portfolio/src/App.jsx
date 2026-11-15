@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import NetworkTopology from "./components/NetworkTopology";
+import Certifications from "./components/Certifications";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -40,6 +41,7 @@ export default function App() {
           <About darkMode={darkMode} />
           <Education darkMode={darkMode} />
           <Projects darkMode={darkMode} />
+          <Certifications darkMode={darkMode} />
           <Contact darkMode={darkMode} />
         </main>
         <Footer darkMode={darkMode} />

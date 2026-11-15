@@ -19,6 +19,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
     { name: "About", href: "#about" },
     { name: "Education", href: "#education" },
     { name: "Projects", href: "#projects" },
+    { name: "Certifications", href: "#certifications" },
     { name: "Contact", href: "#contact" },
   ];
 
