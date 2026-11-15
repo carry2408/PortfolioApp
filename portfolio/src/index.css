@@ -26,18 +26,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
 }
-
-/* Faded Server Log Stream Keyframes */
-@keyframes logStream {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-.animate-log-stream {
-  animation: logStream 45s linear infinite;
-  will-change: transform;
-}

@@ -6,7 +6,7 @@ import Education from "./components/Education";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import BackgroundLogs from "./components/BackgroundLogs";
+import NetworkTopology from "./components/NetworkTopology";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -29,8 +29,8 @@ export default function App() {
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      {/* Dynamic Faded Backend Log Stream Watermark */}
-      <BackgroundLogs darkMode={darkMode} />
+      {/* Interactive Network Node Topology Graph */}
+      <NetworkTopology darkMode={darkMode} />
 
       {/* Foreground Content */}
       <div className="relative z-10">
