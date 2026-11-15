@@ -24,6 +24,7 @@ export default function Contact({ darkMode }) {
   const [status, setStatus] = useState({ message: "", type: "" });
   const [copied, setCopied] = useState(false);
 
+  const iconColor = darkMode ? "text-neutral-400" : "text-neutral-600";
   const emailAddress = "veereshvijay24082006@gmail.com";
 
   const handleCopyEmail = () => {
@@ -69,17 +70,14 @@ export default function Contact({ darkMode }) {
       }`}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
+        {/* Clean Header without '// 04' */}
         <div className="flex flex-col items-start mb-12">
-          <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1">
-            // 04. GET IN TOUCH
-          </span>
           <h2
             className={`text-3xl sm:text-4xl font-bold tracking-tight ${
               darkMode ? "text-white" : "text-neutral-900"
             }`}
           >
-            Contact & Collaboration
+            Contact
           </h2>
         </div>
 
@@ -120,7 +118,7 @@ export default function Contact({ darkMode }) {
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <FaEnvelope className="text-blue-500 text-sm" />
+                  <FaEnvelope className={iconColor} />
                   <div>
                     <p className={`text-[10px] uppercase font-semibold ${darkMode ? "text-neutral-500" : "text-neutral-600"}`}>
                       Direct Email
@@ -128,7 +126,7 @@ export default function Contact({ darkMode }) {
                     <a
                       href={`mailto:${emailAddress}`}
                       className={`text-xs sm:text-sm font-semibold transition-colors break-all ${
-                        darkMode ? "text-neutral-200 hover:text-blue-400" : "text-neutral-900 hover:text-blue-600"
+                        darkMode ? "text-neutral-200 hover:text-white" : "text-neutral-900 hover:text-black"
                       }`}
                     >
                       {emailAddress}
@@ -141,9 +139,9 @@ export default function Contact({ darkMode }) {
                   aria-label="Copy email address"
                   className={`px-3 py-1.5 rounded-lg border text-xs flex items-center gap-1.5 transition-colors ${
                     copied
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-500 font-medium"
+                      ? "border-neutral-500 bg-neutral-800 text-neutral-200 font-medium"
                       : darkMode
-                      ? "border-neutral-800 bg-neutral-900 text-neutral-300 hover:border-neutral-700"
+                      ? "border-neutral-800 bg-neutral-900 text-neutral-300 hover:border-neutral-700 hover:text-white"
                       : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-neutral-400 font-medium"
                   }`}
                 >
@@ -169,7 +167,7 @@ export default function Contact({ darkMode }) {
                   darkMode ? "bg-neutral-950 border-neutral-850" : "bg-white border-neutral-300 shadow-sm"
                 }`}
               >
-                <FaMapMarkerAlt className={darkMode ? "text-neutral-500" : "text-neutral-600"} />
+                <FaMapMarkerAlt className={iconColor} />
                 <div>
                   <p className={`text-[10px] ${darkMode ? "text-neutral-500" : "text-neutral-600"}`}>Location</p>
                   <p className={`font-semibold ${darkMode ? "text-neutral-300" : "text-neutral-900"}`}>
@@ -183,7 +181,7 @@ export default function Contact({ darkMode }) {
                   darkMode ? "bg-neutral-950 border-neutral-850" : "bg-white border-neutral-300 shadow-sm"
                 }`}
               >
-                <FaClock className={darkMode ? "text-neutral-500" : "text-neutral-600"} />
+                <FaClock className={iconColor} />
                 <div>
                   <p className={`text-[10px] ${darkMode ? "text-neutral-500" : "text-neutral-600"}`}>Response</p>
                   <p className={`font-semibold ${darkMode ? "text-neutral-300" : "text-neutral-900"}`}>
@@ -209,7 +207,7 @@ export default function Contact({ darkMode }) {
                       : "border-neutral-300 bg-white text-neutral-800 hover:border-neutral-400 font-medium shadow-xs"
                   }`}
                 >
-                  <FaGithub />
+                  <FaGithub className={iconColor} />
                   <span>GitHub</span>
                 </a>
 
@@ -219,11 +217,11 @@ export default function Contact({ darkMode }) {
                   rel="noreferrer"
                   className={`flex items-center gap-2 px-3.5 py-2 rounded-lg border transition-colors ${
                     darkMode
-                      ? "border-neutral-800 bg-neutral-950 text-neutral-300 hover:border-blue-500 hover:text-blue-400"
-                      : "border-neutral-300 bg-white text-neutral-800 hover:border-blue-600 hover:text-blue-600 font-medium shadow-xs"
+                      ? "border-neutral-800 bg-neutral-950 text-neutral-300 hover:border-neutral-700 hover:text-white"
+                      : "border-neutral-300 bg-white text-neutral-800 hover:border-neutral-400 font-medium shadow-xs"
                   }`}
                 >
-                  <FaLinkedin className="text-blue-500" />
+                  <FaLinkedin className={iconColor} />
                   <span>LinkedIn</span>
                 </a>
               </div>
@@ -244,7 +242,7 @@ export default function Contact({ darkMode }) {
               }`}
             >
               <div className="flex items-center gap-2 font-mono text-xs text-neutral-500 mb-5">
-                <FaTerminal className="text-blue-500" />
+                <FaTerminal className={iconColor} />
                 <span className={darkMode ? "text-neutral-500" : "text-neutral-600"}>POST /api/contact</span>
               </div>
 
@@ -268,8 +266,8 @@ export default function Contact({ darkMode }) {
                     required
                     className={`w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-colors ${
                       darkMode
-                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-blue-500"
-                        : "bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-blue-600"
+                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-neutral-600"
+                        : "bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-500"
                     }`}
                   />
                 </div>
@@ -293,8 +291,8 @@ export default function Contact({ darkMode }) {
                     required
                     className={`w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-colors ${
                       darkMode
-                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-blue-500"
-                        : "bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-blue-600"
+                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-neutral-600"
+                        : "bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-500"
                     }`}
                   />
                 </div>
@@ -318,8 +316,8 @@ export default function Contact({ darkMode }) {
                     required
                     className={`w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-colors resize-none ${
                       darkMode
-                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-blue-500"
-                        : "bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-blue-600"
+                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-neutral-600"
+                        : "bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-neutral-500"
                     }`}
                   />
                 </div>
@@ -347,8 +345,8 @@ export default function Contact({ darkMode }) {
                   <div
                     className={`p-3.5 rounded-lg font-mono text-xs border ${
                       status.type === "success"
-                        ? "bg-emerald-500/10 border-emerald-500/40 text-emerald-500 font-medium"
-                        : "bg-rose-500/10 border-rose-500/40 text-rose-500 font-medium"
+                        ? "bg-neutral-900 border-neutral-700 text-neutral-200 font-medium"
+                        : "bg-neutral-900 border-neutral-700 text-neutral-200 font-medium"
                     }`}
                   >
                     {status.message}

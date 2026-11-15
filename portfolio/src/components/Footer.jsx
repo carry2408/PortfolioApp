@@ -1,6 +1,8 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp, FaTerminal } from "react-icons/fa";
 
 export default function Footer({ darkMode }) {
+  const iconColor = darkMode ? "text-neutral-400" : "text-neutral-600";
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -17,7 +19,7 @@ export default function Footer({ darkMode }) {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Left: Brand */}
           <div className="flex items-center gap-2">
-            <FaTerminal className="text-blue-500" />
+            <FaTerminal className={iconColor} />
             <span
               className={`font-bold tracking-tight ${
                 darkMode ? "text-white" : "text-neutral-900"
@@ -95,7 +97,7 @@ export default function Footer({ darkMode }) {
                 rel="noreferrer"
                 aria-label="LinkedIn"
                 className={`transition-colors ${
-                  darkMode ? "hover:text-blue-400 text-neutral-400" : "hover:text-blue-600 text-neutral-600"
+                  darkMode ? "hover:text-white text-neutral-400" : "hover:text-black text-neutral-600"
                 }`}
               >
                 <FaLinkedin className="text-sm" />

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload, FaTerminal, FaServer, FaCode } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload, FaServer, FaCode } from "react-icons/fa";
 import { SiSpring, SiPostgresql, SiDocker } from "react-icons/si";
 
 export default function Hero({ darkMode }) {
@@ -46,14 +46,14 @@ export default function Hero({ darkMode }) {
     >
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center">
         
-        {/* Left: Circular Grayscale Profile Image (5 cols) */}
+        {/* Left: Circular Original Color Profile Image (5 cols) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="md:col-span-5 flex flex-col items-center justify-center"
         >
-          {/* Circular Frame with Grayscale Image */}
+          {/* Circular Frame with Original Color Photo */}
           <div className="relative group flex flex-col items-center">
             <div
               className={`p-1.5 rounded-full border shadow-sm transition-all duration-300 ${
@@ -65,20 +65,19 @@ export default function Hero({ darkMode }) {
               <img
                 src="/profile.png"
                 alt="Veeresh Patil"
-                className="w-52 h-52 sm:w-64 sm:h-64 object-cover rounded-full grayscale contrast-110 brightness-95 transition-all duration-300 group-hover:grayscale-0"
+                className="w-52 h-52 sm:w-64 sm:h-64 object-cover rounded-full shadow-inner"
               />
             </div>
 
-            {/* Terminal status badge */}
+            {/* Clean Status Badge without green dot */}
             <div
-              className={`mt-4 px-3.5 py-1.5 rounded-full border font-mono text-xs flex items-center gap-2 ${
+              className={`mt-5 px-4 py-1.5 rounded-full border font-mono text-xs tracking-wide transition-colors ${
                 darkMode
-                  ? "bg-neutral-950 border-neutral-800 text-neutral-300"
-                  : "bg-neutral-100 border-neutral-300 text-neutral-800"
+                  ? "bg-neutral-950 border-neutral-800 text-neutral-400"
+                  : "bg-neutral-100 border-neutral-300 text-neutral-700"
               }`}
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>status: open to work / internships</span>
+              Open for Internships & Opportunities
             </div>
           </div>
         </motion.div>
@@ -90,13 +89,7 @@ export default function Hero({ darkMode }) {
           transition={{ duration: 0.5 }}
           className="md:col-span-7 flex flex-col items-start"
         >
-          {/* Terminal Command Prompt */}
-          <div className="flex items-center gap-2 font-mono text-xs text-neutral-500 mb-2">
-            <FaTerminal className="text-blue-500" />
-            <span>cat developer_profile.json</span>
-          </div>
-
-          <p className="text-xs font-mono uppercase tracking-widest text-blue-500 font-semibold">
+          <p className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-semibold">
             Hi, I am
           </p>
 
@@ -124,46 +117,46 @@ export default function Hero({ darkMode }) {
             systems with Java, Spring Boot, PostgreSQL, and modern React frontends.
           </p>
 
-          {/* Stack summary chips (monospace, backend style) */}
+          {/* Stack summary chips with gray icons */}
           <div className="mt-6 flex flex-wrap gap-2 text-xs font-mono">
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
                 darkMode
                   ? "border-neutral-800 bg-neutral-900 text-neutral-300"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 font-medium"
               }`}
             >
-              <FaServer className="text-amber-500" />
+              <FaServer className={darkMode ? "text-neutral-400" : "text-neutral-600"} />
               <span>Java 21</span>
             </span>
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
                 darkMode
                   ? "border-neutral-800 bg-neutral-900 text-neutral-300"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 font-medium"
               }`}
             >
-              <SiSpring className="text-emerald-500" />
+              <SiSpring className={darkMode ? "text-neutral-400" : "text-neutral-600"} />
               <span>Spring Boot</span>
             </span>
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
                 darkMode
                   ? "border-neutral-800 bg-neutral-900 text-neutral-300"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 font-medium"
               }`}
             >
-              <SiPostgresql className="text-sky-500" />
+              <SiPostgresql className={darkMode ? "text-neutral-400" : "text-neutral-600"} />
               <span>PostgreSQL</span>
             </span>
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border ${
                 darkMode
                   ? "border-neutral-800 bg-neutral-900 text-neutral-300"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 font-medium"
               }`}
             >
-              <SiDocker className="text-blue-500" />
+              <SiDocker className={darkMode ? "text-neutral-400" : "text-neutral-600"} />
               <span>Docker</span>
             </span>
           </div>
@@ -176,7 +169,7 @@ export default function Hero({ darkMode }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold transition-colors"
             >
-              <FaFileDownload />
+              <FaFileDownload className="text-white/90" />
               <span>View Resume</span>
             </a>
 
@@ -185,10 +178,10 @@ export default function Hero({ darkMode }) {
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border font-mono text-xs font-semibold transition-colors ${
                 darkMode
                   ? "border-neutral-700 bg-neutral-900 text-neutral-200 hover:border-neutral-500 hover:text-white"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-neutral-400 hover:bg-neutral-200"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-neutral-400 hover:bg-neutral-200 font-medium"
               }`}
             >
-              <FaCode />
+              <FaCode className={darkMode ? "text-neutral-400" : "text-neutral-600"} />
               <span>Explore Projects</span>
             </a>
 
@@ -197,20 +190,20 @@ export default function Hero({ darkMode }) {
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border font-mono text-xs font-semibold transition-colors ${
                 darkMode
                   ? "border-neutral-800 hover:border-neutral-700 text-neutral-400 hover:text-white"
-                  : "border-neutral-300 hover:border-neutral-400 text-neutral-700 hover:text-black"
+                  : "border-neutral-300 hover:border-neutral-400 text-neutral-700 hover:text-black font-medium"
               }`}
             >
               <span>Contact</span>
             </a>
           </div>
 
-          {/* Social Links */}
+          {/* Social Links with gray icons */}
           <div
             className={`mt-8 pt-6 border-t w-full flex items-center gap-4 ${
               darkMode ? "border-neutral-900 text-neutral-400" : "border-neutral-200 text-neutral-600"
             }`}
           >
-            <span className={`font-mono text-xs ${darkMode ? "text-neutral-500" : "text-neutral-500"}`}>
+            <span className="font-mono text-xs text-neutral-500">
               socials:
             </span>
             <a
@@ -218,7 +211,9 @@ export default function Hero({ darkMode }) {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="hover:text-blue-500 transition-colors"
+              className={`transition-colors ${
+                darkMode ? "text-neutral-400 hover:text-white" : "text-neutral-600 hover:text-black"
+              }`}
             >
               <FaGithub className="text-lg" />
             </a>
@@ -227,14 +222,18 @@ export default function Hero({ darkMode }) {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="hover:text-blue-500 transition-colors"
+              className={`transition-colors ${
+                darkMode ? "text-neutral-400 hover:text-white" : "text-neutral-600 hover:text-black"
+              }`}
             >
               <FaLinkedin className="text-lg" />
             </a>
             <a
               href="mailto:veereshvijay24082006@gmail.com"
               aria-label="Email"
-              className="hover:text-blue-500 transition-colors"
+              className={`transition-colors ${
+                darkMode ? "text-neutral-400 hover:text-white" : "text-neutral-600 hover:text-black"
+              }`}
             >
               <FaEnvelope className="text-lg" />
             </a>

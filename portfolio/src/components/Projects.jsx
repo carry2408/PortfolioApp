@@ -5,6 +5,8 @@ import { FaGithub, FaExternalLinkAlt, FaFolder } from "react-icons/fa";
 export default function Projects({ darkMode }) {
   const [filter, setFilter] = useState("all");
 
+  const iconColor = darkMode ? "text-neutral-400" : "text-neutral-600";
+
   const projects = [
     {
       title: "TaskFlow - Agile Management Platform",
@@ -77,18 +79,15 @@ export default function Projects({ darkMode }) {
       }`}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Header & Filter Controls */}
+        {/* Clean Header & Filter Controls without '// 03' */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1 block">
-              // 03. PROJECTS
-            </span>
             <h2
               className={`text-3xl sm:text-4xl font-bold tracking-tight ${
                 darkMode ? "text-white" : "text-neutral-900"
               }`}
             >
-              Engineering Work
+              Projects
             </h2>
           </div>
 
@@ -120,7 +119,7 @@ export default function Projects({ darkMode }) {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
             {filteredProjects.map((project, i) => (
-              <ProjectCard key={project.title} project={project} darkMode={darkMode} index={i} />
+              <ProjectCard key={project.title} project={project} darkMode={darkMode} index={i} iconColor={iconColor} />
             ))}
           </AnimatePresence>
         </div>
@@ -129,7 +128,7 @@ export default function Projects({ darkMode }) {
   );
 }
 
-function ProjectCard({ project, darkMode, index }) {
+function ProjectCard({ project, darkMode, index, iconColor }) {
   const hasLive = project.live && project.live !== "#";
 
   return (
@@ -151,10 +150,10 @@ function ProjectCard({ project, darkMode, index }) {
           darkMode ? "border-neutral-850 bg-neutral-900/60 text-neutral-400" : "border-neutral-200 bg-neutral-100 text-neutral-700"
         }`}>
           <span className="flex items-center gap-2">
-            <FaFolder className="text-amber-500 text-xs" />
+            <FaFolder className={iconColor} />
             <span className="truncate max-w-[180px]">{project.title.toLowerCase().replace(/\s+/g, "-")}</span>
           </span>
-          <span className={`text-[10px] uppercase font-semibold ${darkMode ? "text-neutral-500" : "text-neutral-500"}`}>
+          <span className="text-[10px] uppercase font-semibold text-neutral-500">
             {project.category}
           </span>
         </div>
@@ -219,7 +218,7 @@ function ProjectCard({ project, darkMode, index }) {
               : "border-neutral-300 bg-white hover:border-neutral-400 text-neutral-800 font-medium shadow-xs"
           }`}
         >
-          <FaGithub />
+          <FaGithub className={iconColor} />
           <span>GitHub</span>
         </a>
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSun, FaMoon, FaBars, FaTimes, FaFileAlt, FaTerminal } from "react-icons/fa";
+import { FaSun, FaMoon, FaBars, FaTimes, FaFileAlt } from "react-icons/fa";
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,8 +27,8 @@ export default function Navbar({ darkMode, setDarkMode }) {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-200 border-b ${
         scrolled
           ? darkMode
-            ? "bg-black/95 backdrop-blur-md border-neutral-800 py-3"
-            : "bg-white/95 backdrop-blur-md border-neutral-200 py-3"
+            ? "bg-black/95 backdrop-blur-md border-neutral-800 py-3.5"
+            : "bg-white/95 backdrop-blur-md border-neutral-200 py-3.5"
           : darkMode
           ? "bg-black border-neutral-900 py-4"
           : "bg-white border-neutral-200 py-4"
@@ -38,11 +38,16 @@ export default function Navbar({ darkMode, setDarkMode }) {
         {/* Brand / Logo */}
         <a
           href="#home"
-          className="flex items-center gap-2 group font-mono font-bold tracking-tight text-lg"
+          className="flex items-center gap-1 group font-mono font-bold tracking-tight text-lg"
         >
-          <span className="text-blue-500 font-extrabold flex items-center gap-1.5">
-            <FaTerminal className="text-sm" />
-            <span>veeresh@dev:~$</span>
+          <span className={darkMode ? "text-neutral-500 group-hover:text-neutral-300" : "text-neutral-400 group-hover:text-neutral-600"}>
+            &lt;
+          </span>
+          <span className={`tracking-normal ${darkMode ? "text-white" : "text-neutral-900"}`}>
+            Veeresh Patil
+          </span>
+          <span className={darkMode ? "text-neutral-500 group-hover:text-neutral-300" : "text-neutral-400 group-hover:text-neutral-600"}>
+            /&gt;
           </span>
         </a>
 
@@ -72,11 +77,11 @@ export default function Navbar({ darkMode, setDarkMode }) {
               rel="noopener noreferrer"
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold border transition-all ${
                 darkMode
-                  ? "border-neutral-700 bg-neutral-900 text-neutral-200 hover:border-blue-500 hover:text-white"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-blue-600 hover:text-black"
+                  ? "border-neutral-700 bg-neutral-900 text-neutral-300 hover:border-neutral-500 hover:text-white"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-neutral-400 hover:text-black"
               }`}
             >
-              <FaFileAlt className="text-xs text-blue-500" />
+              <FaFileAlt className={`text-xs ${darkMode ? "text-neutral-400" : "text-neutral-600"}`} />
               <span>Resume</span>
             </a>
 
@@ -86,8 +91,8 @@ export default function Navbar({ darkMode, setDarkMode }) {
               aria-label="Toggle theme"
               className={`p-2 rounded-lg border text-sm transition-colors ${
                 darkMode
-                  ? "border-neutral-800 bg-neutral-900 text-neutral-300 hover:border-neutral-700 hover:text-white"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-700 hover:border-neutral-400 hover:text-black"
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-neutral-700 hover:text-white"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-600 hover:border-neutral-400 hover:text-black"
               }`}
             >
               {darkMode ? <FaSun className="text-xs" /> : <FaMoon className="text-xs" />}
@@ -102,8 +107,8 @@ export default function Navbar({ darkMode, setDarkMode }) {
             aria-label="Toggle theme"
             className={`p-2 rounded-lg border text-sm ${
               darkMode
-                ? "border-neutral-800 bg-neutral-900 text-neutral-300"
-                : "border-neutral-300 bg-neutral-100 text-neutral-700"
+                ? "border-neutral-800 bg-neutral-900 text-neutral-400"
+                : "border-neutral-300 bg-neutral-100 text-neutral-600"
             }`}
           >
             {darkMode ? <FaSun className="text-xs" /> : <FaMoon className="text-xs" />}
@@ -151,7 +156,9 @@ export default function Navbar({ darkMode, setDarkMode }) {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 text-center py-2 rounded-lg border border-blue-500 text-blue-400 text-xs font-semibold"
+                className={`flex-1 text-center py-2 rounded-lg border text-xs font-semibold ${
+                  darkMode ? "border-neutral-700 text-neutral-300" : "border-neutral-300 text-neutral-800"
+                }`}
               >
                 View Resume
               </a>

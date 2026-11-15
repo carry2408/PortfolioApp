@@ -22,58 +22,60 @@ import {
 } from "react-icons/si";
 
 export default function About({ darkMode }) {
-  // Exact skill groups matching user's original specification without hallucination
+  // Gray-shaded icon color: visible and distinct on both dark and light backgrounds
+  const iconColor = darkMode ? "text-neutral-400" : "text-neutral-600";
+
   const skillCategories = [
     {
       title: "Frontend",
-      icon: <FaReact className="text-cyan-400" />,
+      icon: <FaReact className={iconColor} />,
       skills: [
-        { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-        { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-        { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-        { name: "React", icon: <FaReact className="text-cyan-400" /> },
+        { name: "HTML", icon: <FaHtml5 className={iconColor} /> },
+        { name: "CSS", icon: <FaCss3Alt className={iconColor} /> },
+        { name: "JavaScript", icon: <FaJs className={iconColor} /> },
+        { name: "React", icon: <FaReact className={iconColor} /> },
       ],
     },
     {
       title: "Backend",
-      icon: <FaServer className="text-emerald-500" />,
+      icon: <FaServer className={iconColor} />,
       skills: [
-        { name: "Spring", icon: <SiSpring className="text-emerald-500" /> },
-        { name: "Spring Boot", icon: <SiSpring className="text-emerald-500" /> },
-        { name: "Hibernate", icon: <SiHibernate className="text-yellow-600" /> },
-        { name: "Spring Security", icon: <FaDatabase className="text-teal-400" /> },
-        { name: "ORM", icon: <FaDatabase className="text-teal-400" /> },
+        { name: "Spring", icon: <SiSpring className={iconColor} /> },
+        { name: "Spring Boot", icon: <SiSpring className={iconColor} /> },
+        { name: "Hibernate", icon: <SiHibernate className={iconColor} /> },
+        { name: "Spring Security", icon: <FaDatabase className={iconColor} /> },
+        { name: "ORM", icon: <FaDatabase className={iconColor} /> },
       ],
     },
     {
       title: "Database",
-      icon: <FaDatabase className="text-sky-400" />,
+      icon: <FaDatabase className={iconColor} />,
       skills: [
-        { name: "MongoDB", icon: <SiMongodb className="text-emerald-500" /> },
-        { name: "SQL", icon: <SiMysql className="text-blue-500" /> },
+        { name: "MongoDB", icon: <SiMongodb className={iconColor} /> },
+        { name: "SQL", icon: <SiMysql className={iconColor} /> },
       ],
     },
     {
       title: "Programming",
-      icon: <FaCode className="text-amber-500" />,
+      icon: <FaCode className={iconColor} />,
       skills: [
-        { name: "Java", icon: <FaJava className="text-amber-500" /> },
-        { name: "DSA", icon: <FaJs className="text-yellow-400" /> },
+        { name: "Java", icon: <FaJava className={iconColor} /> },
+        { name: "DSA", icon: <FaJs className={iconColor} /> },
       ],
     },
     {
       title: "Tools",
-      icon: <FaGitAlt className="text-orange-500" />,
+      icon: <FaGitAlt className={iconColor} />,
       skills: [
-        { name: "Git", icon: <FaGitAlt className="text-orange-500" /> },
-        { name: "GitHub", icon: <FaGithub className={darkMode ? "text-neutral-300" : "text-neutral-800"} /> },
+        { name: "Git", icon: <FaGitAlt className={iconColor} /> },
+        { name: "GitHub", icon: <FaGithub className={iconColor} /> },
       ],
     },
     {
       title: "Learning",
-      icon: <FaBrain className="text-purple-400" />,
+      icon: <FaBrain className={iconColor} />,
       skills: [
-        { name: "AI / ML", icon: <SiTensorflow className="text-amber-500" /> },
+        { name: "AI / ML", icon: <SiTensorflow className={iconColor} /> },
       ],
     },
   ];
@@ -88,17 +90,14 @@ export default function About({ darkMode }) {
       }`}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+        {/* Clean Section Header without '// 01' */}
         <div className="flex flex-col items-start mb-12">
-          <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1">
-            // 01. ABOUT ME
-          </span>
           <h2
             className={`text-3xl sm:text-4xl font-bold tracking-tight ${
               darkMode ? "text-white" : "text-neutral-900"
             }`}
           >
-            Background & Skills
+            About Me
           </h2>
         </div>
 
@@ -123,7 +122,7 @@ export default function About({ darkMode }) {
                   darkMode ? "text-white" : "text-neutral-900"
                 }`}
               >
-                <FaTerminal className="text-xs text-blue-500" />
+                <FaTerminal className={`text-xs ${iconColor}`} />
                 <span>engineering_profile.md</span>
               </h3>
 
@@ -158,7 +157,9 @@ export default function About({ darkMode }) {
                 <span className={darkMode ? "text-neutral-500" : "text-neutral-600 font-semibold"}>
                   SYSTEM METRICS
                 </span>
-                <span className="text-emerald-500 font-bold">READY</span>
+                <span className={`font-mono text-[11px] font-semibold ${darkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+                  READY
+                </span>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between">
@@ -189,7 +190,7 @@ export default function About({ darkMode }) {
             </div>
           </motion.div>
 
-          {/* Right Column: Original Skill Cards (7 cols) */}
+          {/* Right Column: Original Skill Cards with Gray Icons (7 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

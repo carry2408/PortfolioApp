@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { FaGraduationCap, FaSchool, FaUniversity } from "react-icons/fa";
 
 export default function Education({ darkMode }) {
+  const iconColor = darkMode ? "text-neutral-400" : "text-neutral-600";
+
   const educationData = [
     {
       period: "2024 - 2028",
@@ -10,7 +12,7 @@ export default function Education({ darkMode }) {
       location: "Bengaluru, Karnataka",
       grade: "CGPA: 9.0",
       status: "Current (3rd Year)",
-      icon: <FaUniversity className="text-blue-500" />,
+      icon: <FaUniversity className={iconColor} />,
       details: "Focusing on Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Computer Networks, and Backend Engineering.",
     },
     {
@@ -20,7 +22,7 @@ export default function Education({ darkMode }) {
       location: "Karnataka, India",
       grade: "Percentage: 95%",
       status: "Distinction",
-      icon: <FaGraduationCap className="text-purple-500" />,
+      icon: <FaGraduationCap className={iconColor} />,
       details: "Specialized in Physics, Chemistry, Mathematics, and Computer Science with academic excellence.",
     },
     {
@@ -30,7 +32,7 @@ export default function Education({ darkMode }) {
       location: "Karnataka, India",
       grade: "Percentage: 99%",
       status: "Top Distinction",
-      icon: <FaSchool className="text-emerald-500" />,
+      icon: <FaSchool className={iconColor} />,
       details: "Graduated with 99% distinction, recognized for outstanding academic performance across all disciplines.",
     },
   ];
@@ -43,17 +45,14 @@ export default function Education({ darkMode }) {
       }`}
     >
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
+        {/* Clean Header without '// 02' */}
         <div className="flex flex-col items-start mb-12">
-          <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1">
-            // 02. EDUCATION
-          </span>
           <h2
             className={`text-3xl sm:text-4xl font-bold tracking-tight ${
               darkMode ? "text-white" : "text-neutral-900"
             }`}
           >
-            Academic Background
+            Education
           </h2>
         </div>
 
