@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -7,19 +7,35 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-
-
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("portfolio-theme");
+    return saved !== null ? saved === "dark" : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("portfolio-theme", darkMode ? "dark" : "light");
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
-    <div>
+    <div
+      className={`min-h-screen transition-colors duration-300 font-sans ${
+        darkMode ? "bg-[#090d16] text-slate-100" : "bg-[#f8fafc] text-slate-900"
+      }`}
+    >
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Hero darkMode={darkMode} />
-      <About darkMode={darkMode} />
-      <Education darkMode={darkMode} />
-      <Projects darkMode={darkMode} />
-      <Contact darkMode={darkMode} />
+      <main>
+        <Hero darkMode={darkMode} />
+        <About darkMode={darkMode} />
+        <Education darkMode={darkMode} />
+        <Projects darkMode={darkMode} />
+        <Contact darkMode={darkMode} />
+      </main>
       <Footer darkMode={darkMode} />
     </div>
   );

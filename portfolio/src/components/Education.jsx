@@ -1,68 +1,143 @@
 import { motion } from "framer-motion";
+import { FaGraduationCap, FaSchool, FaUniversity, FaAward } from "react-icons/fa";
 
 export default function Education({ darkMode }) {
+  const educationData = [
+    {
+      period: "2024 - 2028",
+      degree: "B.E. in Computer Science & Engineering",
+      institution: "Ramaiah Institute of Technology (MSRIT)",
+      location: "Bengaluru, Karnataka",
+      grade: "9.0 CGPA",
+      gradeLabel: "Current (3rd Year)",
+      icon: <FaUniversity className="text-blue-500" />,
+      highlights: [
+        "Core subjects: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks.",
+        "Actively developing full-stack web architectures and backend microservices.",
+      ],
+    },
+    {
+      period: "2022 - 2024",
+      degree: "Pre-University / 12th Grade (PCMC)",
+      institution: "G V PU College",
+      location: "Karnataka, India",
+      grade: "95%",
+      gradeLabel: "Distinction",
+      icon: <FaGraduationCap className="text-purple-500" />,
+      highlights: [
+        "Focused on Physics, Chemistry, Mathematics, and Computer Science.",
+        "Achieved strong foundational excellence in analytical mathematics and logic.",
+      ],
+    },
+    {
+      period: "Passed 2022",
+      degree: "Secondary School / 10th Grade",
+      institution: "St. Mary's High School",
+      location: "Karnataka, India",
+      grade: "99%",
+      gradeLabel: "Top Performer",
+      icon: <FaSchool className="text-emerald-500" />,
+      highlights: [
+        "Graduated with 99% distinction.",
+        "Awarded for outstanding academic achievement across science and mathematics.",
+      ],
+    },
+  ];
+
   return (
     <section
       id="education"
-      className={`px-6 py-20 ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
-      }`}
+      className="py-24 px-6 relative"
     >
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-12">Education</h2>
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2">
+            Academic Background
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Education Journey
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-3" />
+        </div>
 
-        <div className="relative border-l border-gray-600">
+        {/* Timeline container */}
+        <div className="relative pl-6 sm:pl-8 border-l-2 border-slate-700/60 dark:border-slate-800 ml-4 sm:ml-6 space-y-12">
+          {educationData.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="relative group"
+            >
+              {/* Timeline Node Icon */}
+              <div
+                className={`absolute -left-[35px] sm:-left-[43px] top-1.5 w-10 h-10 rounded-xl border flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 ${
+                  darkMode
+                    ? "bg-[#090d16] border-slate-700 shadow-black/40"
+                    : "bg-white border-slate-300 shadow-slate-200"
+                }`}
+              >
+                {item.icon}
+              </div>
 
-          {/* 10th */}
-          <TimelineItem
-            year="2022"
-            title="10th Grade"
-            subtitle="St Mary's School"
-            detail="Percentage: 99%"
-          />
+              {/* Card Container */}
+              <div
+                className={`p-6 sm:p-7 rounded-2xl border transition-all duration-300 group-hover:-translate-y-1 ${
+                  darkMode
+                    ? "bg-slate-900/40 border-slate-800/80 group-hover:border-slate-700 group-hover:shadow-lg group-hover:shadow-blue-500/5"
+                    : "bg-white border-slate-200 group-hover:border-slate-300 group-hover:shadow-md"
+                }`}
+              >
+                {/* Header info */}
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                  <div>
+                    <span className="text-xs font-mono font-semibold text-blue-500 tracking-wider">
+                      {item.period}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold mt-0.5">
+                      {item.degree}
+                    </h3>
+                    <p
+                      className={`text-sm font-medium ${
+                        darkMode ? "text-slate-400" : "text-slate-600"
+                      }`}
+                    >
+                      {item.institution} •{" "}
+                      <span className="text-xs opacity-80">{item.location}</span>
+                    </p>
+                  </div>
 
-          {/* 12th */}
-          <TimelineItem
-            year="2024"
-            title="12th Grade"
-            subtitle="G V PU College"
-            detail="Percentage: 95%"
-          />
+                  {/* Grade Pill */}
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
+                    <FaAward className="text-xs text-amber-400" />
+                    <span className="text-xs font-bold text-blue-400">
+                      {item.grade}
+                    </span>
+                    <span className="text-[10px] text-slate-400 hidden sm:inline">
+                      ({item.gradeLabel})
+                    </span>
+                  </div>
+                </div>
 
-          {/* UG */}
-          <TimelineItem
-            year="2024 - 2028"
-            title="B.E. Computer Science"
-            subtitle="MS Ramaiah Institute, Bangalore"
-            detail="CGPA: 9.0 (Current - 3nd Year)"
-          />
-
+                {/* Highlights */}
+                <ul className="space-y-1.5 mt-4 text-xs sm:text-sm text-slate-400">
+                  {item.highlights.map((h, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
+                      <span className={darkMode ? "text-slate-300" : "text-slate-600"}>
+                        {h}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-/* reusable timeline item */
-function TimelineItem({ year, title, subtitle, detail }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      whileHover={{ scale: 1.03, x: 6 }}
-      transition={{ duration: 0.3 }}
-      className="relative mb-10 ml-6 cursor-pointer"
-    >
-      {/* dot */}
-      <span className="absolute -left-7 w-3 h-3 bg-blue-500 rounded-full "></span>
-
-      <p className="text-sm text-gray-400">{year}</p>
-
-      <h3 className="text-lg font-medium">{title}</h3>
-
-      <p className="text-gray-400">{subtitle}</p>
-
-      <p className="text-gray-500 text-sm">{detail}</p>
-    </motion.div>
   );
 }
