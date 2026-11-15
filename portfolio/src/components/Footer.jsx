@@ -11,8 +11,8 @@ export default function Footer({ darkMode }) {
     <footer
       className={`border-t font-mono text-xs transition-colors duration-200 ${
         darkMode
-          ? "bg-black border-neutral-900 text-neutral-400"
-          : "bg-neutral-100 border-neutral-200 text-neutral-700"
+          ? "bg-black/90 backdrop-blur-sm border-neutral-900 text-neutral-400"
+          : "bg-neutral-100/90 backdrop-blur-sm border-neutral-200 text-neutral-700"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-10">

@@ -38,5 +38,6 @@
 }
 
 .animate-log-stream {
-  animation: logStream 50s linear infinite;
+  animation: logStream 45s linear infinite;
+  will-change: transform;
 }

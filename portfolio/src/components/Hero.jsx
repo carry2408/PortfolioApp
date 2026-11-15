@@ -40,8 +40,8 @@ export default function Hero({ darkMode }) {
   return (
     <section
       id="home"
-      className={`min-h-screen flex items-center justify-center pt-24 pb-16 px-6 transition-colors duration-200 ${
-        darkMode ? "bg-black text-white" : "bg-white text-neutral-900"
+      className={`min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-transparent transition-colors duration-200 ${
+        darkMode ? "text-white" : "text-neutral-900"
       }`}
     >
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center">

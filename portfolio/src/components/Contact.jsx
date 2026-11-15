@@ -65,8 +65,8 @@ export default function Contact({ darkMode }) {
   return (
     <section
       id="contact"
-      className={`py-24 px-6 border-t transition-colors duration-200 ${
-        darkMode ? "bg-black border-neutral-900 text-white" : "bg-neutral-50 border-neutral-200 text-neutral-900"
+      className={`py-24 px-6 border-t bg-transparent transition-colors duration-200 ${
+        darkMode ? "border-neutral-900 text-white" : "border-neutral-200 text-neutral-900"
       }`}
     >
       <div className="max-w-6xl mx-auto">
