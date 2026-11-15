@@ -24,8 +24,8 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 font-sans ${
-        darkMode ? "bg-[#090d16] text-slate-100" : "bg-[#f8fafc] text-slate-900"
+      className={`min-h-screen transition-colors duration-200 ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />

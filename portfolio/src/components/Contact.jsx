@@ -10,6 +10,7 @@ import {
   FaCheck,
   FaMapMarkerAlt,
   FaClock,
+  FaTerminal,
 } from "react-icons/fa";
 
 export default function Contact({ darkMode }) {
@@ -46,13 +47,13 @@ export default function Contact({ darkMode }) {
         form
       );
       setStatus({
-        message: "Thank you! Your message has been sent successfully. I'll get back to you shortly.",
+        message: "Message sent successfully. I will get back to you shortly.",
         type: "success",
       });
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
       setStatus({
-        message: "Failed to send message. Please reach out directly via email or LinkedIn.",
+        message: "Error delivering message. Please reach out directly via email or LinkedIn.",
         type: "error",
       });
     } finally {
@@ -63,142 +64,124 @@ export default function Contact({ darkMode }) {
   return (
     <section
       id="contact"
-      className="py-24 px-6 relative"
+      className={`py-24 px-6 border-t ${
+        darkMode ? "bg-black border-neutral-900 text-white" : "bg-neutral-50 border-neutral-200 text-black"
+      }`}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2">
-            Get in Touch
+        {/* Header */}
+        <div className="flex flex-col items-start mb-12">
+          <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1">
+            // 04. GET IN TOUCH
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Let's Build Something Great
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            Contact & Collaboration
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-3" />
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Direct Contact Info (5 cols) */}
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          {/* Left Column: Direct Info & Endpoints (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="lg:col-span-5 flex flex-col gap-6"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-3">
-                Have a project or open role?
-              </h3>
-              <p
-                className={`leading-relaxed text-sm sm:text-base ${
-                  darkMode ? "text-slate-400" : "text-slate-600"
-                }`}
-              >
-                I am actively seeking software engineering internships, entry-level full-stack positions,
-                and freelance development opportunities. Feel free to shoot me a message or connect directly.
+              <h3 className="text-xl font-bold mb-2">Let's Connect</h3>
+              <p className={`text-sm leading-relaxed ${
+                darkMode ? "text-neutral-400" : "text-neutral-600"
+              }`}>
+                Whether you have an internship opening, backend engineering role, or a project in mind,
+                feel free to reach out. I typically respond within 24 hours.
               </p>
             </div>
 
-            {/* Quick Contact Cards */}
-            <div className="space-y-3">
-              {/* Copyable Email Box */}
-              <div
-                className={`p-4 rounded-2xl border transition-all duration-200 ${
-                  darkMode ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
-                }`}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0">
-                      <FaEnvelope />
-                    </div>
-                    <div>
-                      <p className="text-xs text-slate-400">Direct Email</p>
-                      <a
-                        href={`mailto:${emailAddress}`}
-                        className="text-xs sm:text-sm font-semibold hover:text-blue-500 transition-colors break-all"
-                      >
-                        {emailAddress}
-                      </a>
-                    </div>
+            {/* Email Copy Card */}
+            <div className={`p-4 rounded-xl border font-mono ${
+              darkMode ? "bg-neutral-950 border-neutral-850" : "bg-white border-neutral-200"
+            }`}>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <FaEnvelope className="text-blue-500 text-sm" />
+                  <div>
+                    <p className="text-[10px] text-neutral-500 uppercase">Direct Email</p>
+                    <a
+                      href={`mailto:${emailAddress}`}
+                      className="text-xs sm:text-sm font-semibold hover:text-blue-400 transition-colors break-all"
+                    >
+                      {emailAddress}
+                    </a>
                   </div>
+                </div>
 
-                  <button
-                    onClick={handleCopyEmail}
-                    aria-label="Copy email address"
-                    className={`p-2 rounded-xl border text-xs font-medium flex items-center gap-1.5 transition-all shrink-0 ${
-                      copied
-                        ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/30"
-                        : darkMode
-                        ? "border-slate-700 bg-slate-800/60 text-slate-300 hover:bg-slate-700"
-                        : "border-slate-300 bg-slate-100 text-slate-700 hover:bg-slate-200"
-                    }`}
-                  >
-                    {copied ? (
-                      <>
-                        <FaCheck className="text-emerald-400" />
-                        <span className="hidden sm:inline">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <FaCopy />
-                        <span className="hidden sm:inline">Copy</span>
-                      </>
-                    )}
-                  </button>
+                <button
+                  onClick={handleCopyEmail}
+                  aria-label="Copy email address"
+                  className={`px-3 py-1.5 rounded-lg border text-xs flex items-center gap-1.5 transition-colors ${
+                    copied
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
+                      : darkMode
+                      ? "border-neutral-800 bg-neutral-900 text-neutral-300 hover:border-neutral-700"
+                      : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-neutral-400"
+                  }`}
+                >
+                  {copied ? (
+                    <>
+                      <FaCheck className="text-xs" />
+                      <span>Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaCopy className="text-xs" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Meta Grid */}
+            <div className="grid grid-cols-2 gap-3 font-mono text-xs">
+              <div className={`p-3.5 rounded-xl border flex items-center gap-2.5 ${
+                darkMode ? "bg-neutral-950 border-neutral-850" : "bg-white border-neutral-200"
+              }`}>
+                <FaMapMarkerAlt className="text-neutral-500" />
+                <div>
+                  <p className="text-[10px] text-neutral-500">Location</p>
+                  <p className="font-semibold text-neutral-300">Bengaluru, IN</p>
                 </div>
               </div>
 
-              {/* Location & Response Time */}
-              <div className="grid grid-cols-2 gap-3">
-                <div
-                  className={`p-4 rounded-xl border flex items-center gap-3 ${
-                    darkMode ? "bg-slate-900/30 border-slate-800" : "bg-white border-slate-200"
-                  }`}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center shrink-0">
-                    <FaMapMarkerAlt />
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-slate-400">Location</p>
-                    <p className="text-xs font-semibold">Bengaluru, IN</p>
-                  </div>
-                </div>
-
-                <div
-                  className={`p-4 rounded-xl border flex items-center gap-3 ${
-                    darkMode ? "bg-slate-900/30 border-slate-800" : "bg-white border-slate-200"
-                  }`}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center shrink-0">
-                    <FaClock />
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-slate-400">Response</p>
-                    <p className="text-xs font-semibold">&lt; 24 Hours</p>
-                  </div>
+              <div className={`p-3.5 rounded-xl border flex items-center gap-2.5 ${
+                darkMode ? "bg-neutral-950 border-neutral-850" : "bg-white border-neutral-200"
+              }`}>
+                <FaClock className="text-neutral-500" />
+                <div>
+                  <p className="text-[10px] text-neutral-500">Response</p>
+                  <p className="font-semibold text-neutral-300">&lt; 24h</p>
                 </div>
               </div>
             </div>
 
-            {/* Social Network Links */}
-            <div className="pt-4 border-t border-slate-800/40">
-              <p className={`text-xs font-bold uppercase tracking-wider mb-3 ${darkMode ? "text-slate-500" : "text-slate-400"}`}>
-                Connect on professional platforms
+            {/* Professional Profiles */}
+            <div className="pt-4 border-t border-neutral-900">
+              <p className="font-mono text-xs text-neutral-500 mb-3">
+                profiles:
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-3 font-mono text-xs">
                 <a
                   href="https://github.com/carry2408"
                   target="_blank"
                   rel="noreferrer"
-                  className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 ${
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-lg border transition-colors ${
                     darkMode
-                      ? "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-slate-700 hover:text-white"
-                      : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                      ? "border-neutral-800 bg-neutral-950 text-neutral-300 hover:border-neutral-700 hover:text-white"
+                      : "border-neutral-300 bg-white text-neutral-800 hover:border-neutral-400"
                   }`}
                 >
-                  <FaGithub className="text-base" />
+                  <FaGithub />
                   <span>GitHub</span>
                 </a>
 
@@ -206,13 +189,13 @@ export default function Contact({ darkMode }) {
                   href="https://www.linkedin.com/in/veereshvijay-patil-944b39340"
                   target="_blank"
                   rel="noreferrer"
-                  className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 ${
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-lg border transition-colors ${
                     darkMode
-                      ? "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-blue-500 hover:text-blue-400"
-                      : "border-slate-200 bg-white text-slate-700 hover:border-blue-500 hover:text-blue-600"
+                      ? "border-neutral-800 bg-neutral-950 text-neutral-300 hover:border-blue-500 hover:text-blue-400"
+                      : "border-neutral-300 bg-white text-neutral-800 hover:border-blue-600 hover:text-blue-600"
                   }`}
                 >
-                  <FaLinkedin className="text-base text-blue-500" />
+                  <FaLinkedin className="text-blue-500" />
                   <span>LinkedIn</span>
                 </a>
               </div>
@@ -221,41 +204,40 @@ export default function Contact({ darkMode }) {
 
           {/* Right Column: Contact Form (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="lg:col-span-7"
           >
-            <div
-              className={`p-6 sm:p-8 rounded-3xl border shadow-xl ${
-                darkMode
-                  ? "bg-slate-900/50 border-slate-800 backdrop-blur-xl shadow-black/40"
-                  : "bg-white border-slate-200 backdrop-blur-xl shadow-slate-200/60"
-              }`}
-            >
-              <h3 className="text-xl font-bold mb-6">Send Me a Message</h3>
+            <div className={`p-6 sm:p-7 rounded-xl border ${
+              darkMode ? "bg-neutral-950 border-neutral-850" : "bg-white border-neutral-200"
+            }`}>
+              <div className="flex items-center gap-2 font-mono text-xs text-neutral-500 mb-5">
+                <FaTerminal className="text-blue-500" />
+                <span>POST /api/contact</span>
+              </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2"
+                    className="block font-mono text-xs text-neutral-400 mb-1.5"
                   >
-                    Your Name
+                    name:
                   </label>
                   <input
                     id="name"
                     type="text"
                     name="name"
-                    placeholder="e.g. Alex Johnson"
+                    placeholder="Your Name"
                     value={form.name}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200 ${
+                    className={`w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-colors ${
                       darkMode
-                        ? "bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                        : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-blue-500"
+                        : "bg-neutral-50 border-neutral-300 text-black placeholder:text-neutral-400 focus:border-blue-500"
                     }`}
                   />
                 </div>
@@ -263,22 +245,22 @@ export default function Contact({ darkMode }) {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2"
+                    className="block font-mono text-xs text-neutral-400 mb-1.5"
                   >
-                    Email Address
+                    email:
                   </label>
                   <input
                     id="email"
                     type="email"
                     name="email"
-                    placeholder="e.g. alex@example.com"
+                    placeholder="name@example.com"
                     value={form.email}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200 ${
+                    className={`w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-colors ${
                       darkMode
-                        ? "bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                        : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-blue-500"
+                        : "bg-neutral-50 border-neutral-300 text-black placeholder:text-neutral-400 focus:border-blue-500"
                     }`}
                   />
                 </div>
@@ -286,22 +268,22 @@ export default function Contact({ darkMode }) {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2"
+                    className="block font-mono text-xs text-neutral-400 mb-1.5"
                   >
-                    Your Message
+                    message:
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    placeholder="Tell me about your idea, project, or role..."
+                    placeholder="Your message or project inquiry..."
                     value={form.message}
                     onChange={handleChange}
                     rows="5"
                     required
-                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200 resize-none ${
+                    className={`w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-colors resize-none ${
                       darkMode
-                        ? "bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                        : "bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                        ? "bg-black border-neutral-800 text-white placeholder:text-neutral-600 focus:border-blue-500"
+                        : "bg-neutral-50 border-neutral-300 text-black placeholder:text-neutral-400 focus:border-blue-500"
                     }`}
                   />
                 </div>
@@ -309,17 +291,14 @@ export default function Contact({ darkMode }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white flex items-center justify-center gap-2.5 shadow-lg transition-all duration-200 ${
+                  className={`w-full py-3 px-6 rounded-lg font-mono font-semibold text-xs text-white flex items-center justify-center gap-2 transition-colors ${
                     loading
                       ? "bg-blue-600/70 cursor-wait"
-                      : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0"
+                      : "bg-blue-600 hover:bg-blue-500"
                   }`}
                 >
                   {loading ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span>Transmitting message...</span>
-                    </>
+                    <span>Transmitting payload...</span>
                   ) : (
                     <>
                       <FaPaperPlane className="text-xs" />
@@ -328,19 +307,14 @@ export default function Contact({ darkMode }) {
                   )}
                 </button>
 
-                {/* Status Feedback Notification */}
                 {status.message && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-xl text-xs sm:text-sm font-medium border ${
-                      status.type === "success"
-                        ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                        : "bg-rose-500/10 border-rose-500/30 text-rose-400"
-                    }`}
-                  >
+                  <div className={`p-3.5 rounded-lg font-mono text-xs border ${
+                    status.type === "success"
+                      ? "bg-emerald-950/40 border-emerald-800 text-emerald-400"
+                      : "bg-rose-950/40 border-rose-800 text-rose-400"
+                  }`}>
                     {status.message}
-                  </motion.div>
+                  </div>
                 )}
               </form>
             </div>

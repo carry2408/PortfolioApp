@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp, FaHeart } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp, FaTerminal } from "react-icons/fa";
 
 export default function Footer({ darkMode }) {
   const scrollToTop = () => {
@@ -7,61 +7,51 @@ export default function Footer({ darkMode }) {
 
   return (
     <footer
-      className={`border-t transition-colors duration-300 ${
+      className={`border-t font-mono text-xs transition-colors ${
         darkMode
-          ? "bg-[#060910] border-slate-800/80 text-slate-400"
-          : "bg-slate-50 border-slate-200 text-slate-600"
+          ? "bg-black border-neutral-900 text-neutral-400"
+          : "bg-neutral-100 border-neutral-200 text-neutral-600"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Left: Brand & Tagline */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <a href="#home" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-mono font-bold text-white text-xs shadow-md shadow-blue-500/20">
-                VP
-              </div>
-              <span className="font-bold text-lg text-slate-200 tracking-tight">
-                Veeresh Patil
-              </span>
-            </a>
-            <p className="text-xs text-slate-500 mt-2 max-w-xs">
-              Designing and developing robust full-stack applications with React, Java & Spring Boot.
-            </p>
+      <div className="max-w-6xl mx-auto px-6 py-10">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Left: Brand */}
+          <div className="flex items-center gap-2">
+            <FaTerminal className="text-blue-500" />
+            <span className="font-bold text-white tracking-tight">
+              Veeresh Patil
+            </span>
+            <span className="text-neutral-500">// backend & fullstack developer</span>
           </div>
 
-          {/* Center: Navigation Links */}
-          <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium">
-            <a href="#home" className="hover:text-blue-500 transition-colors">
-              Home
+          {/* Center: Navigation */}
+          <div className="flex flex-wrap justify-center gap-5">
+            <a href="#home" className="hover:text-white transition-colors">
+              home
             </a>
-            <a href="#about" className="hover:text-blue-500 transition-colors">
-              About
+            <a href="#about" className="hover:text-white transition-colors">
+              about
             </a>
-            <a href="#education" className="hover:text-blue-500 transition-colors">
-              Education
+            <a href="#education" className="hover:text-white transition-colors">
+              education
             </a>
-            <a href="#projects" className="hover:text-blue-500 transition-colors">
-              Projects
+            <a href="#projects" className="hover:text-white transition-colors">
+              projects
             </a>
-            <a href="#contact" className="hover:text-blue-500 transition-colors">
-              Contact
+            <a href="#contact" className="hover:text-white transition-colors">
+              contact
             </a>
           </div>
 
           {/* Right: Socials & Back to Top */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <a
                 href="https://github.com/carry2408"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="GitHub Profile"
-                className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all hover:-translate-y-0.5 ${
-                  darkMode
-                    ? "border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white hover:border-slate-700"
-                    : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300"
-                }`}
+                aria-label="GitHub"
+                className="hover:text-white transition-colors"
               >
                 <FaGithub className="text-sm" />
               </a>
@@ -70,24 +60,16 @@ export default function Footer({ darkMode }) {
                 href="https://www.linkedin.com/in/veereshvijay-patil-944b39340"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="LinkedIn Profile"
-                className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all hover:-translate-y-0.5 ${
-                  darkMode
-                    ? "border-slate-800 bg-slate-900/60 text-slate-400 hover:text-blue-400 hover:border-slate-700"
-                    : "border-slate-200 bg-white text-slate-600 hover:text-blue-600 hover:border-slate-300"
-                }`}
+                aria-label="LinkedIn"
+                className="hover:text-blue-400 transition-colors"
               >
                 <FaLinkedin className="text-sm" />
               </a>
 
               <a
                 href="mailto:veereshvijay24082006@gmail.com"
-                aria-label="Email Me"
-                className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all hover:-translate-y-0.5 ${
-                  darkMode
-                    ? "border-slate-800 bg-slate-900/60 text-slate-400 hover:text-blue-400 hover:border-slate-700"
-                    : "border-slate-200 bg-white text-slate-600 hover:text-blue-600 hover:border-slate-300"
-                }`}
+                aria-label="Email"
+                className="hover:text-white transition-colors"
               >
                 <FaEnvelope className="text-sm" />
               </a>
@@ -95,27 +77,22 @@ export default function Footer({ darkMode }) {
 
             <button
               onClick={scrollToTop}
-              aria-label="Back to top"
-              className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all hover:-translate-y-1 ${
+              aria-label="Scroll to top"
+              className={`p-1.5 rounded border transition-colors ${
                 darkMode
-                  ? "border-slate-800 bg-slate-900/80 text-blue-400 hover:bg-blue-600 hover:text-white hover:border-blue-500"
-                  : "border-slate-200 bg-white text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-500"
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-400 hover:text-white hover:border-neutral-700"
+                  : "border-neutral-300 bg-white text-neutral-700 hover:text-black"
               }`}
-              title="Scroll to top"
             >
               <FaArrowUp className="text-xs" />
             </button>
           </div>
         </div>
 
-        {/* Bottom row: Copyright & build badge */}
-        <div className="mt-10 pt-6 border-t border-slate-800/40 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        {/* Bottom copyright line */}
+        <div className="mt-8 pt-4 border-t border-neutral-900 flex justify-between items-center text-[11px] text-neutral-600">
           <p>© {new Date().getFullYear()} Veeresh Patil. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            <span>Crafted with</span>
-            <FaHeart className="text-[10px] text-rose-500" />
-            <span>using React & Tailwind CSS</span>
-          </p>
+          <p>Built with React, Tailwind CSS, & Spring Architecture.</p>
         </div>
       </div>
     </footer>

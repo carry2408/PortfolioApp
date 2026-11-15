@@ -1,46 +1,42 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt, FaLayerGroup, FaStar } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaTerminal, FaFolder } from "react-icons/fa";
 
 export default function Projects({ darkMode }) {
   const [filter, setFilter] = useState("all");
 
   const projects = [
     {
-      title: "TaskFlow - Agile Project Management",
-      category: "fullstack",
-      featured: true,
+      title: "TaskFlow - Agile Management Platform",
+      category: "backend",
       desc: "Full-stack Jira-inspired agile project management and issue-tracking platform featuring Kanban boards, sprint lifecycle management, team collaboration, and role-based access control.",
-      tech: ["React", "Spring Boot", "PostgreSQL", "Redis", "Docker", "Tailwind CSS", "JWT Auth"],
+      tech: ["Spring Boot", "PostgreSQL", "Redis", "Docker", "JWT Auth", "React"],
       img: "/taskflow.png",
       github: "https://github.com/carry2408/TaskFlow",
       live: "#",
     },
     {
-      title: "BloodBridge - Blood Donation Platform",
-      category: "fullstack",
-      featured: true,
+      title: "BloodBridge - Blood Donation System",
+      category: "backend",
       desc: "Full-stack blood donation camp management platform to streamline donor registration, volunteer coordination, and real-time inventory management.",
-      tech: ["React", "JavaScript", "Spring Boot", "PostgreSQL", "JWT Authentication"],
+      tech: ["Spring Boot", "PostgreSQL", "JWT Auth", "React", "JavaScript"],
       img: "/bloodbridge.png",
       github: "https://github.com/carry2408/BloodBridge",
       live: "https://blood-bridge-blood-donation.vercel.app/",
     },
     {
-      title: "Hostel Room Allotment System",
-      category: "fullstack",
-      featured: false,
-      desc: "Comprehensive database-driven web application to automate student hostel room allocations, warden approvals, and occupancy tracking.",
-      tech: ["React", "Node.js", "Express", "SQL", "Tailwind"],
+      title: "Hostel Room Allotment Engine",
+      category: "backend",
+      desc: "Database-driven web application to automate student hostel room allocations, warden approvals, and occupancy tracking.",
+      tech: ["Node.js", "Express", "SQL", "React"],
       img: "/hostel.png",
       github: "https://github.com/carry2408/Hostel-Allotment",
       live: "https://hostel-allotment-two.vercel.app/",
     },
     {
-      title: "Airbnb Full-Stack Experience",
-      category: "fullstack",
-      featured: false,
-      desc: "Interactive stay-booking platform clone with user authentication, property listings, dynamic filtering, and reservation workflow.",
+      title: "Airbnb Clone Architecture",
+      category: "backend",
+      desc: "Full stack clone with user authentication, relational listings schema, and booking workflow.",
       tech: ["React", "Node.js", "Express", "SQL"],
       img: "/airbnb.png",
       github: "https://github.com/carry2408/AIRBNB-CLONE-PROJECT",
@@ -49,19 +45,17 @@ export default function Projects({ darkMode }) {
     {
       title: "Real-Time Weather App",
       category: "frontend",
-      featured: false,
-      desc: "Clean responsive weather dashboard consuming OpenWeather APIs, featuring atmospheric forecasts, location search, and visual condition graphs.",
+      desc: "Weather application integrating OpenWeather REST APIs for live forecasting, geolocation search, and metric visualizations.",
       tech: ["React", "REST API", "Tailwind CSS"],
       img: "/weather.png",
       github: "https://github.com/carry2408/React-Weather-App",
       live: "https://react-weather-app-eight-hazel.vercel.app/",
     },
     {
-      title: "Interactive Developer Portfolio",
+      title: "Personal Portfolio Website",
       category: "frontend",
-      featured: false,
-      desc: "Modern responsive portfolio website built with React, Vite, Tailwind CSS, and Framer Motion, featuring smooth animations and dynamic dark mode.",
-      tech: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+      desc: "Clean, responsive developer portfolio built with React and Tailwind CSS featuring a black backend engineer aesthetic.",
+      tech: ["React", "Tailwind CSS", "Framer Motion"],
       img: "/portfolio.png",
       github: "https://github.com/carry2408/PortfolioApp",
       live: "#",
@@ -70,7 +64,7 @@ export default function Projects({ darkMode }) {
 
   const filteredProjects = projects.filter((p) => {
     if (filter === "all") return true;
-    if (filter === "fullstack") return p.category === "fullstack";
+    if (filter === "backend") return p.category === "backend";
     if (filter === "frontend") return p.category === "frontend";
     return true;
   });
@@ -78,194 +72,162 @@ export default function Projects({ darkMode }) {
   return (
     <section
       id="projects"
-      className="py-24 px-6 relative"
+      className={`py-24 px-6 border-t ${
+        darkMode ? "bg-black border-neutral-900 text-white" : "bg-neutral-50 border-neutral-200 text-black"
+      }`}
     >
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2">
-            Selected Works
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Featured Projects
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-3 mb-6" />
+        {/* Header & Filter Controls */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-widest text-blue-500 mb-1 block">
+              // 03. PROJECTS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              Engineering Work
+            </h2>
+          </div>
 
-          {/* Category Filter Pills */}
-          <div
-            className={`inline-flex p-1.5 rounded-2xl border ${
-              darkMode
-                ? "bg-slate-900/60 border-slate-800"
-                : "bg-slate-100 border-slate-200"
-            }`}
-          >
+          {/* Minimalist Filter Tabs */}
+          <div className="flex items-center gap-2 font-mono text-xs">
             {[
-              { id: "all", label: "All Projects" },
-              { id: "fullstack", label: "Full Stack & Java" },
-              { id: "frontend", label: "Frontend & Web" },
+              { id: "all", label: "all" },
+              { id: "backend", label: "backend & fullstack" },
+              { id: "frontend", label: "frontend" },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setFilter(tab.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-md border transition-colors ${
                   filter === tab.id
-                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/25"
+                    ? "bg-blue-600 border-blue-500 text-white font-semibold"
                     : darkMode
-                    ? "text-slate-400 hover:text-white"
-                    : "text-slate-600 hover:text-slate-900"
+                    ? "border-neutral-800 bg-neutral-900 text-neutral-400 hover:text-white"
+                    : "border-neutral-200 bg-white text-neutral-600 hover:text-black"
                 }`}
               >
-                {tab.label}
+                [{tab.label}]
               </button>
             ))}
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <motion.div
-          layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-7"
-        >
+        {/* Project Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
             {filteredProjects.map((project, i) => (
               <ProjectCard key={project.title} project={project} darkMode={darkMode} index={i} />
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
-/* Individual Project Card */
 function ProjectCard({ project, darkMode, index }) {
   const hasLive = project.live && project.live !== "#";
 
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      whileHover={{ y: -6 }}
-      className={`group flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 ${
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      className={`rounded-xl border flex flex-col justify-between overflow-hidden transition-colors ${
         darkMode
-          ? "bg-slate-900/40 border-slate-800 hover:border-slate-700 hover:shadow-xl hover:shadow-blue-500/5"
-          : "bg-white border-slate-200 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/60"
+          ? "bg-neutral-950 border-neutral-850 hover:border-neutral-700"
+          : "bg-white border-neutral-200 hover:border-neutral-300"
       }`}
     >
-      {/* Project Image & Badge Container */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-slate-800">
-        <img
-          src={project.img}
-          alt={project.title}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-          onError={(e) => {
-            e.target.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80";
-          }}
-        />
-
-        {/* Subtle Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-
-        {/* Featured Badge */}
-        {project.featured && (
-          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-bold shadow-md">
-            <FaStar className="text-[10px] text-amber-300" />
-            <span>Featured</span>
-          </div>
-        )}
-
-        {/* Live Status indicator */}
-        <div className="absolute top-3 right-3">
-          {hasLive ? (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/90 backdrop-blur-md text-white text-[10px] font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              Live Demo
-            </span>
-          ) : (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-slate-300 text-[10px] font-medium border border-slate-700/60">
-              <FaLayerGroup className="text-[9px]" />
-              Repository
-            </span>
-          )}
+      <div>
+        {/* Terminal Header bar */}
+        <div className={`px-4 py-2 border-b flex items-center justify-between font-mono text-xs ${
+          darkMode ? "border-neutral-850 bg-neutral-900/60 text-neutral-400" : "border-neutral-200 bg-neutral-100 text-neutral-600"
+        }`}>
+          <span className="flex items-center gap-2">
+            <FaFolder className="text-amber-500 text-xs" />
+            <span className="truncate max-w-[180px]">{project.title.toLowerCase().replace(/\s+/g, "-")}</span>
+          </span>
+          <span className="text-[10px] text-neutral-500 uppercase">{project.category}</span>
         </div>
-      </div>
 
-      {/* Project Content */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          <h3 className="text-lg font-bold tracking-tight group-hover:text-blue-500 transition-colors duration-200">
+        {/* Project Image */}
+        <div className="relative aspect-[16/10] bg-neutral-900 overflow-hidden">
+          <img
+            src={project.img}
+            alt={project.title}
+            className="w-full h-full object-cover object-top opacity-90 transition duration-300 hover:opacity-100"
+            onError={(e) => {
+              e.target.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80";
+            }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="p-5">
+          <h3 className="font-bold text-base tracking-tight text-white">
             {project.title}
           </h3>
 
-          <p
-            className={`mt-2.5 text-xs sm:text-sm line-clamp-3 leading-relaxed ${
-              darkMode ? "text-slate-400" : "text-slate-600"
-            }`}
-          >
+          <p className={`mt-2 text-xs leading-relaxed line-clamp-3 ${
+            darkMode ? "text-neutral-400" : "text-neutral-600"
+          }`}>
             {project.desc}
           </p>
-        </div>
 
-        <div>
-          {/* Tech Stack Chips */}
-          <div className="flex flex-wrap gap-1.5 mt-5">
+          {/* Tech stack chips */}
+          <div className="flex flex-wrap gap-1.5 mt-4 font-mono text-[11px]">
             {project.tech.map((t, idx) => (
               <span
                 key={idx}
-                className={`text-[11px] px-2.5 py-1 rounded-lg font-medium border ${
-                  darkMode
-                    ? "bg-slate-800/50 border-slate-700/60 text-slate-300"
-                    : "bg-slate-100 border-slate-200 text-slate-700"
+                className={`px-2 py-0.5 rounded border ${
+                  darkMode ? "border-neutral-800 bg-neutral-900 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-700"
                 }`}
               >
                 {t}
               </span>
             ))}
           </div>
-
-          {/* Action Link Buttons */}
-          <div className="flex items-center gap-3 mt-6 pt-4 border-t border-slate-800/40">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-200 ${
-                darkMode
-                  ? "border-slate-700 hover:border-slate-500 hover:bg-slate-800 text-slate-200 hover:text-white"
-                  : "border-slate-300 hover:border-slate-400 hover:bg-slate-100 text-slate-800"
-              }`}
-            >
-              <FaGithub className="text-sm" />
-              <span>Source</span>
-            </a>
-
-            {hasLive ? (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-500/20 transition-all duration-200"
-              >
-                <span>Live Demo</span>
-                <FaExternalLinkAlt className="text-[10px]" />
-              </a>
-            ) : (
-              <span
-                className={`flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium cursor-not-allowed border ${
-                  darkMode
-                    ? "border-slate-800/60 text-slate-500 bg-slate-900/30"
-                    : "border-slate-200 text-slate-400 bg-slate-50"
-                }`}
-                title="Live preview currently in deployment"
-              >
-                <span>Code Only</span>
-              </span>
-            )}
-          </div>
         </div>
+      </div>
+
+      {/* Action Footer */}
+      <div className={`p-4 border-t flex items-center gap-3 font-mono text-xs ${
+        darkMode ? "border-neutral-850 bg-neutral-950" : "border-neutral-200 bg-white"
+      }`}>
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex-1 inline-flex items-center justify-center gap-2 py-2 rounded-lg border transition-colors ${
+            darkMode
+              ? "border-neutral-800 bg-neutral-900 hover:border-neutral-700 text-neutral-200"
+              : "border-neutral-300 bg-neutral-100 hover:border-neutral-400 text-neutral-800"
+          }`}
+        >
+          <FaGithub />
+          <span>GitHub</span>
+        </a>
+
+        {hasLive ? (
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors"
+          >
+            <span>Live Demo</span>
+            <FaExternalLinkAlt className="text-[10px]" />
+          </a>
+        ) : (
+          <span className={`flex-1 inline-flex items-center justify-center py-2 rounded-lg border text-neutral-500 text-[11px] cursor-not-allowed ${
+            darkMode ? "border-neutral-900 bg-neutral-900/40" : "border-neutral-200 bg-neutral-50"
+          }`}>
+            Code Only
+          </span>
+        )}
       </div>
     </motion.div>
   );

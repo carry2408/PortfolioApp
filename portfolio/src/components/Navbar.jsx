@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSun, FaMoon, FaBars, FaTimes, FaFileAlt } from "react-icons/fa";
+import { FaSun, FaMoon, FaBars, FaTimes, FaFileAlt, FaTerminal } from "react-icons/fa";
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,57 +23,40 @@ export default function Navbar({ darkMode, setDarkMode }) {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-200 border-b ${
         scrolled
           ? darkMode
-            ? "bg-[#090d16]/80 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20 py-3"
-            : "bg-white/80 backdrop-blur-xl border-b border-slate-200/80 shadow-sm py-3"
+            ? "bg-black/95 backdrop-blur-md border-neutral-800 py-3"
+            : "bg-white/95 backdrop-blur-md border-neutral-200 py-3"
           : darkMode
-          ? "bg-transparent py-5"
-          : "bg-transparent py-5"
+          ? "bg-black border-neutral-900 py-4"
+          : "bg-white border-neutral-200 py-4"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Brand Logo */}
+        {/* Brand / Logo */}
         <a
           href="#home"
-          className="group flex items-center gap-2 focus:outline-none"
+          className="flex items-center gap-2 group font-mono font-bold tracking-tight text-lg"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 p-[2px] transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md shadow-blue-500/20">
-            <div
-              className={`w-full h-full rounded-[10px] flex items-center justify-center font-mono font-bold text-sm ${
-                darkMode ? "bg-[#090d16] text-blue-400" : "bg-white text-blue-600"
-              }`}
-            >
-              VP
-            </div>
-          </div>
-          <span className="font-bold text-lg tracking-tight transition-colors duration-200">
-            Veeresh<span className="text-blue-500">.dev</span>
+          <span className="text-blue-500 font-extrabold flex items-center gap-1.5">
+            <FaTerminal className="text-sm" />
+            <span>veeresh@dev:~$</span>
           </span>
         </a>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-1">
-          <div
-            className={`flex items-center gap-1 px-3 py-1.5 rounded-full border ${
-              darkMode
-                ? "bg-slate-900/40 border-slate-800/80 backdrop-blur-md"
-                : "bg-slate-100/70 border-slate-200/80 backdrop-blur-md"
-            }`}
-          >
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-6 text-sm font-medium">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`transition-colors duration-200 ${
                   darkMode
-                    ? "text-slate-300 hover:text-white hover:bg-slate-800/60"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
+                    ? "text-neutral-400 hover:text-white"
+                    : "text-neutral-600 hover:text-black"
                 }`}
               >
                 {link.name}
@@ -81,54 +64,58 @@ export default function Navbar({ darkMode, setDarkMode }) {
             ))}
           </div>
 
-          <div className="flex items-center gap-2.5 ml-4">
+          <div className="flex items-center gap-3">
             {/* Resume button */}
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold border transition-all ${
+                darkMode
+                  ? "border-neutral-700 bg-neutral-900 text-neutral-200 hover:border-blue-500 hover:text-white"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 hover:border-blue-600 hover:text-black"
+              }`}
             >
-              <FaFileAlt className="text-xs" />
-              Resume
+              <FaFileAlt className="text-xs text-blue-500" />
+              <span>Resume</span>
             </a>
 
-            {/* Theme Toggle Button */}
+            {/* Theme Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               aria-label="Toggle theme"
-              className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all duration-300 hover:scale-105 active:scale-95 ${
+              className={`p-2 rounded-lg border text-sm transition-colors ${
                 darkMode
-                  ? "border-slate-800 bg-slate-900/60 text-amber-400 hover:border-slate-700 hover:bg-slate-800"
-                  : "border-slate-200 bg-slate-100 text-slate-700 hover:border-slate-300 hover:bg-slate-200"
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-300 hover:border-neutral-700 hover:text-white"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-700 hover:border-neutral-400 hover:text-black"
               }`}
             >
-              {darkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+              {darkMode ? <FaSun className="text-xs" /> : <FaMoon className="text-xs" />}
             </button>
           </div>
-        </nav>
+        </div>
 
-        {/* Mobile menu and toggle */}
+        {/* Mobile menu button */}
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Toggle theme"
-            className={`w-9 h-9 rounded-lg flex items-center justify-center border transition-all ${
+            className={`p-2 rounded-lg border text-sm ${
               darkMode
-                ? "border-slate-800 bg-slate-900 text-amber-400"
-                : "border-slate-200 bg-slate-100 text-slate-700"
+                ? "border-neutral-800 bg-neutral-900 text-neutral-300"
+                : "border-neutral-300 bg-neutral-100 text-neutral-700"
             }`}
           >
-            {darkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+            {darkMode ? <FaSun className="text-xs" /> : <FaMoon className="text-xs" />}
           </button>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
-            className={`w-9 h-9 rounded-lg flex items-center justify-center border transition-all ${
+            className={`p-2 rounded-lg border text-sm ${
               darkMode
-                ? "border-slate-800 bg-slate-900 text-white"
-                : "border-slate-200 bg-slate-100 text-slate-900"
+                ? "border-neutral-800 bg-neutral-900 text-white"
+                : "border-neutral-300 bg-neutral-100 text-black"
             }`}
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
@@ -136,60 +123,51 @@ export default function Navbar({ darkMode, setDarkMode }) {
         </div>
       </div>
 
-      {/* Mobile Drawer Dropdown */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className={`md:hidden border-b px-6 py-5 ${
-              darkMode
-                ? "bg-[#090d16]/95 border-slate-800/80 backdrop-blur-2xl"
-                : "bg-white/95 border-slate-200/80 backdrop-blur-2xl"
+            className={`md:hidden border-t px-6 py-4 flex flex-col gap-3 font-mono text-sm ${
+              darkMode ? "bg-black border-neutral-800" : "bg-white border-neutral-200"
             }`}
           >
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
-                    darkMode
-                      ? "text-slate-200 hover:bg-slate-800/80 hover:text-white"
-                      : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  }`}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-2 border-t border-slate-800/30 flex gap-3 mt-2">
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold shadow-md shadow-blue-500/20"
-                >
-                  View Resume
-                </a>
-                <a
-                  href="#contact"
-                  onClick={() => setMenuOpen(false)}
-                  className={`flex-1 text-center py-2.5 rounded-xl border text-sm font-semibold ${
-                    darkMode
-                      ? "border-slate-700 text-slate-200 hover:bg-slate-800"
-                      : "border-slate-300 text-slate-800 hover:bg-slate-100"
-                  }`}
-                >
-                  Contact Me
-                </a>
-              </div>
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`py-1.5 transition-colors ${
+                  darkMode ? "text-neutral-400 hover:text-white" : "text-neutral-600 hover:text-black"
+                }`}
+              >
+                &gt; {link.name}
+              </a>
+            ))}
+            <div className="pt-2 border-t border-neutral-800 flex gap-2">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 text-center py-2 rounded-lg border border-blue-500 text-blue-400 text-xs font-semibold"
+              >
+                View Resume
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className={`flex-1 text-center py-2 rounded-lg border text-xs font-semibold ${
+                  darkMode ? "border-neutral-700 text-white" : "border-neutral-300 text-black"
+                }`}
+              >
+                Contact
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </nav>
   );
 }
